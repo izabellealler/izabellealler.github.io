@@ -1,0 +1,28 @@
+[project]
+name = "izabellealler-github-io"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "mkdocs-material>=9.5.40",
+    "mkdocs-monorepo-plugin>=1.1.0",
+    "ruff>=0.6.9",
+    "taskipy>=1.13.0",
+]
+
+[tool.ruff]
+line-length = 79
+extend-exclude = []
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check . && ruff check . --diff'
+format = 'ruff check . --fix && ruff format .'
+newProject = 'python ./utils/create_project.py'
